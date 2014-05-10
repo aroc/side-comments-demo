@@ -4,15 +4,20 @@ var favicon = require('static-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var hbs = require('express-hbs');
 
 var routes = require('./routes/index');
-var users = require('./routes/users');
 
 var app = express();
 
+// Use `.hbs` for extensions and find partials in `views/partials`.
+app.engine('hbs', hbs.express3({
+    defaultLayout: __dirname + "/views/layouts/main.hbs",
+}));
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+app.set('view engine', 'hbs');
 
 app.use(favicon());
 app.use(logger('dev'));
@@ -22,7 +27,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
-app.use('/users', users);
 
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {
