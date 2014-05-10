@@ -1,0 +1,18 @@
+{
+  "name": "side-comments",
+  "dependencies": {
+    "lodash/lodash": "*"
+  },
+  "main": "js/main.js",
+  "scripts": [
+    "js/main.js"
+  ],
+  "templates": [
+    "templates/side-comment.html"
+  ],
+  "styles": [
+    "css/base.css",
+    "css/default-theme.css"
+  ],
+  "repository": "aroc/side-comments"
+}
