@@ -34,17 +34,39 @@ li {
   min-height: 350px;
   padding: 60px 0px;
   overflow: none;
+  position: relative;
+}
+#header .container {
+  position: relative;
+  z-index: 20;
+}
+#header .overlay {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background: rgba(38, 106, 68, 0.6);
+  z-index: 10;
 }
 #header h1 {
-  font-size: 80px;
+  font-size: 420%;
   font-family: 'Sansita One', Sans-serif;
   margin-bottom: -18px;
   font-weight: 300;
 }
 #header h2 {
-  font-size: 24px;
+  font-size: 120%;
   font-style: italic;
   font-weight: 400;
+}
+#header-bg-vid {
+  width: 100%;
+  position: absolute;
+  z-index: 1;
+  top: -300px;
+  left: 0px;
+  background: url('../images/typing.png') no-repeat;
 }
 .main-heading {
   color: #FFF;
@@ -57,6 +79,10 @@ li {
   margin: 35px auto 0 auto;
   width: 400px;
   color: #FFF;
+}
+#cta:hover {
+  background: #FFF;
+  color: #1A5132;
 }
 #navbar {
   height: 60px;
