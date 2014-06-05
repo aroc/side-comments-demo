@@ -1,8 +1,10 @@
 {
   "name": "lodash",
-  "version": "2.4.1",
+  "repo": "lodash/lodash",
+  "version": "2.5.0-pre",
   "description": "A utility library delivering consistency, customization, performance, & extras.",
   "license": "MIT",
+  "main": "dist/lodash.compat.js",
   "keywords": [
     "amd",
     "browser",
@@ -12,8 +14,6 @@
     "util"
   ],
   "scripts": [
-    "index.js",
     "dist/lodash.compat.js"
-  ],
-  "repository": "lodash/lodash"
+  ]
 }

@@ -1,32 +1,34 @@
 var gulp = require('gulp');
-
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
-var minifycss = require('gulp-minify-css');
+var minifycss = require('gulp-minify-css')
+var less = require('gulp-less');;
+var prefix = require('gulp-autoprefixer');
 
 var paths = {
   scripts: ['public/javascripts/app/build/*.js'],
-  styles: ['public/stylesheets/vendor/*.css', 'public/javascripts/app/build/*.css']
+  less: ['public/stylesheets/app/base.less']
 };
 
 gulp.task('scripts', function() {
-  // Minify and copy all JavaScript (except vendor scripts)
   return gulp.src(paths.scripts)
     .pipe(concat('app.js'))
     .pipe(gulp.dest('public/javascripts'));
 });
 
-gulp.task('styles', function() {
-  return gulp.src(paths.styles)
+gulp.task('less', function() {
+  return gulp.src(paths.less)
+    .pipe(less({ paths: paths.less }))
     .pipe(concat('style.css'))
+    .pipe(prefix({ cascade: true }))
     .pipe(gulp.dest('public/stylesheets'));
 });
 
 // Rerun the task when a file changes
 gulp.task('watch', function() {
   gulp.watch(paths.scripts, ['scripts']);
-  gulp.watch(paths.styles, ['styles']);
+  gulp.watch('public/stylesheets/app/*.less', ['less']);
 });
 
 // The default task (called when you run `gulp` from cli)
-gulp.task('default', ['scripts', 'styles', 'watch']);
+gulp.task('default', ['scripts', 'less', 'watch']);
