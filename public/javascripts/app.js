@@ -9352,7 +9352,7 @@ SideComments.prototype.initialize = function( existingComments ) {
  * Shows the side comments.
  */
 SideComments.prototype.showComments = function() {
-  this.$body.addClass('side-comments-open');
+  this.$el.addClass('side-comments-open');
 };
 
 /**
@@ -9364,7 +9364,7 @@ SideComments.prototype.hideComments = function() {
     this.activeSection = null;
   }
 
-  this.$body.removeClass('side-comments-open');
+  this.$el.removeClass('side-comments-open');
 };
 
 /**
@@ -9438,7 +9438,7 @@ SideComments.prototype.deleteComment = function( sectionId, commentId ) {
  * @return {Boolean} Whether or not the comments are visible.
  */
 SideComments.prototype.commentsAreVisible = function() {
-  return this.$body.hasClass('side-comments-open');
+  return this.$el.hasClass('side-comments-open');
 };
 
 /**
@@ -9757,6 +9757,7 @@ $(document).ready(function(){
       console.log('Oh noes! An error!');
     }
   });
+
 });
 });
 
@@ -9780,3 +9781,19 @@ require.alias("component-emitter/index.js", "aroc-side-comments/deps/emitter/ind
 
 require.alias("aroc-side-comments/js/main.js", "aroc-side-comments/index.js");
 require.alias("side-comments-demo/main.js", "side-comments-demo/index.js");
+var SideComments = require('side-comments');
+
+$(document).ready(function(){
+  var sideComments;
+  $.ajax({
+    url: 'http://localhost:3000/comments',
+    type: 'GET',
+    success: function( results ) {
+      sideComments = new SideComments('#commentable-container', results);
+    },
+    error: function( xhr, status, error ) {
+      console.log('Oh noes! An error!');
+    }
+  });
+
+});

@@ -1,3 +1,4 @@
+@import "../../javascripts/app/build/build.css";
 @import "vendor/normalize.css";
 @import "vendor/grid.css";
 @import "vendor/font-awesome.css";
@@ -50,13 +51,15 @@ li {
   z-index: 10;
 }
 #header h1 {
-  font-size: 420%;
+  font-size: 72px;
+  line-height: 72px;
   font-family: 'Sansita One', Sans-serif;
-  margin-bottom: -18px;
+  margin: 0;
   font-weight: 300;
 }
 #header h2 {
-  font-size: 120%;
+  font-size: 24px;
+  line-height: 24px;
   font-style: italic;
   font-weight: 400;
 }
@@ -67,6 +70,10 @@ li {
   top: -300px;
   left: 0px;
   background: url('../images/typing.png') no-repeat;
+}
+.over-vid {
+  position: relative;
+  z-index: 10;
 }
 .main-heading {
   color: #FFF;
@@ -87,4 +94,39 @@ li {
 #navbar {
   height: 60px;
   background: #359D64;
+}
+#navbar ul {
+  margin: 0 auto;
+  list-style: none;
+  padding: 0;
+}
+#navbar li {
+  float: left;
+  padding: 0 20px;
+}
+#navbar a {
+  color: #DDD;
+  text-decoration: none;
+  line-height: 60px;
+}
+#navbar a:hover {
+  color: #FFF;
+}
+#main-content {
+  background: #FFF;
+}
+.section-header {
+  border: 1px solid #DDD;
+  background: #F8F8F8;
+  padding: 40px 0;
+  margin-bottom: 40px;
+}
+.section-header h2 {
+  font-size: 72px;
+  line-height: 72px;
+  font-weight: 700;
+}
+.section-header p {
+  margin: 0 0 0 3px;
+  max-width: 550px;
 }
