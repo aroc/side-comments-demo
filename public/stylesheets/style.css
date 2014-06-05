@@ -12,6 +12,12 @@ div,
 li {
   font-family: 'Oxygen', Helvetica, Sans-serif;
 }
+.center-text {
+  text-align: center;
+}
+.title {
+  font-size: 32px;
+}
 .btn {
   border: 1px solid #DDD;
   border-radius: 100px;
@@ -119,7 +125,10 @@ li {
   border: 1px solid #DDD;
   background: #F8F8F8;
   padding: 40px 0;
-  margin-bottom: 40px;
+  margin: 60px 0;
+}
+.section-header.first {
+  margin-top: 0;
 }
 .section-header h2 {
   font-size: 72px;
