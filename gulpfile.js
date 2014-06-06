@@ -6,7 +6,7 @@ var less = require('gulp-less');;
 var prefix = require('gulp-autoprefixer');
 
 var paths = {
-  scripts: ['public/javascripts/app/build/*.js', 'public/javascripts/app/main.js'],
+  scripts: ['public/javascripts/vendor/*.js', 'public/javascripts/build/build/*.js', 'public/javascripts/app/*.js'],
   less: ['public/stylesheets/app/base.less']
 };
 
