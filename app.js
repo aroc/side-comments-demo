@@ -13,6 +13,7 @@ var app = express();
 // Use `.hbs` for extensions and find partials in `views/partials`.
 app.engine('hbs', hbs.express3({
     defaultLayout: __dirname + "/views/layouts/main.hbs",
+    partialsDir: __dirname + '/views/partials'
 }));
 
 // view engine setup
