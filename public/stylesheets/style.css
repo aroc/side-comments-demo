@@ -122,8 +122,6 @@ li {
   background: #FFF;
 }
 .section-header {
-  border: 1px solid #DDD;
-  background: #F8F8F8;
   padding: 40px 0;
   margin: 60px 0;
 }
@@ -134,8 +132,11 @@ li {
   font-size: 72px;
   line-height: 72px;
   font-weight: 700;
+  margin-bottom: 10px;
 }
 .section-header p {
   margin: 0 0 0 3px;
   max-width: 550px;
+  border-bottom: 4px solid #DDD;
+  padding-bottom: 20px;
 }

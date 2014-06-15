@@ -2,9 +2,5 @@
   "name": "side-comments-demo",
   "dependencies": {
     "aroc/side-comments": "*"
-  },
-  "main": "main.js",
-  "scripts": [
-    "main.js"
-  ]
+  }
 }
