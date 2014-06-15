@@ -15,6 +15,20 @@ h5 {
 .title {
   font-size: 32px;
 }
+.text-center {
+  text-align: center;
+}
+p,
+li,
+td {
+  font-size: 15px;
+}
+thead td {
+  font-weight: 700;
+}
+.commentable-section {
+  font-size: 18px;
+}
 .btn {
   border-radius: 100px;
   padding: 15px 30px;
@@ -365,6 +379,7 @@ table th[class*="col-"] {
   margin-bottom: 10px;
 }
 .section-header p {
+  font-size: 18px;
   margin: 0 0 0 3px;
   max-width: 550px;
   border-bottom: 4px solid #DDD;
@@ -412,9 +427,6 @@ pre {
 .margin-bottom {
   margin-bottom: 40px;
 }
-.text-center {
-  text-align: center;
-}
 .gist .gist-file .gist-data .line-pre {
   font-family: "Consolas", "Liberation Mono", Courier, monospace;
 }
@@ -423,4 +435,10 @@ pre {
 }
 .arguments-list li {
   margin: 0 0 20px 0;
+}
+.doc-section {
+  border-left: 4px solid #DDD;
+  padding: 20px 20px 20px 30px;
+  background: #FAFAFA;
+  margin-bottom: 20px;
 }
