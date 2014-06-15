@@ -4,12 +4,40 @@
       Docs
     </h2>
     <p>
-      These are some awesome docs!
+      Overview of all events and method you can leverage in SideComments.js
     </p>
   </div>
 </div>
 <div class="container">
+  <h4>
+    SideComments Constructor
+  </h4>
+
   <p>
-    # TODO
+    The constructor takes one required and two optional arguments:
+    <br>
+    <ul class="arguments-list">
+      <li>
+        <code>$el</code> (String): The element which contains all the <code>.commentable-section</code> elements.
+      </li>
+      <li>
+        <code>currentUser</code> (Object) *optional: The user representation new comments will be posted under. As it's optional, you can just pass <code>null</code> if there is no current user at the time and set one at a later time with the <code>setCurrentUser</code> method, which is documented below. The current user object needs to look like this: <a href="https://gist.github.com/aroc/02a0f8badf219da12667">https://gist.github.com/aroc/02a0f8badf219da12667</a>
+      </li>
+      <li>
+        <code>existingComments</code> (Array) *optional: An array of existing comments that you want inserted at initialization time. You can also insert comments yourself at later time with the <code>insertComment</code> method, outlined below. The structure of the objects in this array needs to look like this: <a href="https://gist.github.com/aroc/54a2669783231a0d2215">https://gist.github.com/aroc/54a2669783231a0d2215</a>
+      </li>
+    </ul>
   </p>
+
+  <h4>
+    Methods
+  </h4>
+
+  <p>
+    <strong>setCurrentUser</strong>
+  </p>
+
+  <h4>
+    Events
+  </h4>
 </div>

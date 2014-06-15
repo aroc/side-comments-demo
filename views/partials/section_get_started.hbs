@@ -1,44 +1,115 @@
 <div class="section-header">
+
   <div class="container">
     <h2>Get Started</h2>
     <p>
       How to start using SideComments.js on your website immediately.
     </p>
   </div>
+
 </div>
+
 <div class="container">
-  <ul>
-  	<li>
-  		<h4>
-  			1. Download SideComments.js
-  		</h4>
-  		<p>
-  			<a href="#" class="btn">
-  				<i class="fa fa-cloud-download"></i>
-  				Download SideComments.js
-  			</a>
-  		</p>
-  	</li>
-  	<li>
-  		<h4>
-  			2. Include SideComments.js in your project.
-  		</h4>
-  		<p class="alert">
-  			<i class="fa fa-info"></i> You must include jQuery in your project in order for SideComments.js to work. This component uses jQuery to manage DOM manipulation and will not work without it.
-  		</p>
-  		<p>
-  			You can download jQuery from <a href="http://jquery.com">http://jquery.com/</a>.
-  		</p>
-  		<p class="cdn">
-  			Or you can use Google's CDN and just include the script for whichever version of jQuery you want to use:
-  			<br>
-  			<pre>
-  				,
-  			</pre>
-  		</p>
-  	</li>
-  	<li>
-  		3. Initialize a new SideComments object.
-  	</li>
-  </ul>
+
+  <div class="margin-bottom download-options">
+    <h3>
+      1. Download SideComments.js
+    </h3>
+    <div class="row clearfix">
+      <div class="column third">
+        <h4>Direct download</h4>
+        <p>Download SideComments.js immediately.</p>
+        <a href="#" class="btn">
+          <i class="fa fa-cloud-download"></i>
+          Download SideComments.js
+        </a>
+      </div>
+      <div class="column third">
+        <h4>Source code</h4>
+        <p>Check out the source code on Github.</p>
+        <a href="#" class="btn">
+          <i class="fa fa-github"></i>
+          SideComments.js on Github
+        </a>
+      </div>
+      <div class="column third">
+        <h4>Install with Component</h4>
+        <p>
+          You can install SideComments via component.
+          <br>
+          <br>
+          <code>component install aroc/side-comments</code>
+          <br>
+          <br>
+          or include side-comments in your <strong>component.json file</strong> <code>dependencies</code> object.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="margin-bottom">
+    <h4>
+      2. Include SideComments.js in your project.
+    </h4>
+    <div class="alert">
+      <h3>
+        jQuery Required
+      </h3>
+      <p>
+        You must include jQuery in your project in order for SideComments.js to work. This component uses jQuery to manage DOM manipulation and will not work without it.
+      </p>
+    </div>
+    <p>
+      You'll need to include the following single JavaScript file and two CSS files to get SideComments.js working.
+      <br>  
+      <code>side-comments.js</code>
+      <br>
+      <code>side-comments.css</code>
+      <br>
+      <code>default-theme.css</code>
+      <p>
+        <i class="fa fa-info-circle"></i>
+        You can choose <strong>not</strong> to include <code>default-theme.css</code>, but you'll need to style SideComments youself if you choose not to include it, as <code>side-comments.css</code> handles only the basic layout styling.
+      </p>
+    </p>
+
+  </div>
+  
+  <div class="margin-bottom">
+    <h4>
+      3. Set up your HTML.
+    </h4>
+    <p>
+      You need to have a wrapper element to point SideComments at and two things on each commentable section; the class <code>commentable-section</code> and the data attribute <code>data-section-id</code>, which holds the unique ID of that commentable-section for this page.
+    </p>
+    <script src="https://gist.github.com/aroc/ae4eeb1023d435b6e45b.js"></script>
+  </div>
+
+  <div class="margin-bottom">
+    <h4>
+      4. Initialize a new SideComments object.
+    </h4>
+    <br>
+    <script src="https://gist.github.com/aroc/5ecc7921fbfd5fc26731.js"></script>
+
+    <p>
+      The current user is an object and is expected to be in the following format:
+    </p>
+    <script src="https://gist.github.com/aroc/02a0f8badf219da12667.js"></script>
+    <p>
+      The existing comments argument is expected to be an array of sections with a nested array of comments. It needs to look like the following:
+    </p>
+    <script src="https://gist.github.com/aroc/54a2669783231a0d2215.js"></script>
+  </div>
+
+  <div class="margin-bottom">
+    <h4>
+      5. Listen to post and delete events.
+    </h4>
+    <p>
+      Finally, in order to know when a comment has been posted or deleted, just bind to your SideComments' object events and then do whatever you want with them, (likely save and delete from your database).
+    </p>
+    <script src="https://gist.github.com/aroc/a0175669102bec44ea28.js"></script>
+  </div>
+
 </div>
