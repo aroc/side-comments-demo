@@ -1,4 +1,4 @@
-<div class="section-header">
+<div id="docs" class="section-header">
   <div class="container">
     <h2>
       Docs
@@ -9,35 +9,141 @@
   </div>
 </div>
 <div class="container">
-  <h4>
+  <h3>
     SideComments Constructor
-  </h4>
+  </h3>
 
   <p>
     The constructor takes one required and two optional arguments:
     <br>
     <ul class="arguments-list">
       <li>
-        <code>$el</code> (String): The element which contains all the <code>.commentable-section</code> elements.
+        <code>$el</code> (String):
+        <br>
+        The element which contains all the <code>.commentable-section</code> elements.
       </li>
       <li>
-        <code>currentUser</code> (Object) *optional: The user representation new comments will be posted under. As it's optional, you can just pass <code>null</code> if there is no current user at the time and set one at a later time with the <code>setCurrentUser</code> method, which is documented below. The current user object needs to look like this: <a href="https://gist.github.com/aroc/02a0f8badf219da12667">https://gist.github.com/aroc/02a0f8badf219da12667</a>
+        <code>currentUser</code> (Object) *optional:
+        <br>
+        The user representation new comments will be posted under. As it's optional, you can just pass <code>null</code> if there is no current user at the time and set one at a later time with the <code>setCurrentUser</code> method, which is documented below. The current user object needs to look like this: <a href="https://gist.github.com/aroc/02a0f8badf219da12667">https://gist.github.com/aroc/02a0f8badf219da12667</a>
       </li>
       <li>
-        <code>existingComments</code> (Array) *optional: An array of existing comments that you want inserted at initialization time. You can also insert comments yourself at later time with the <code>insertComment</code> method, outlined below. The structure of the objects in this array needs to look like this: <a href="https://gist.github.com/aroc/54a2669783231a0d2215">https://gist.github.com/aroc/54a2669783231a0d2215</a>
+        <code>existingComments</code> (Array) *optional:
+        <br>
+        An array of existing comments that you want inserted at initialization time. You can also insert comments yourself at later time with the <code>insertComment</code> method, outlined below. The structure of the objects in this array needs to look like this: <a href="https://gist.github.com/aroc/54a2669783231a0d2215">https://gist.github.com/aroc/54a2669783231a0d2215</a>
       </li>
     </ul>
   </p>
 
-  <h4>
+  <h3>
     Methods
-  </h4>
+  </h3>
 
+  <h4>
+    selectSection(sectionId)
+  </h4>
   <p>
-    <strong>setCurrentUser</strong>
+    <strong>Description:</strong> Select a section and make it active, showing the side comments. If the side comments are already shown, then the currently active section will hide and this section will display. If this section is arleady active, then this method will have no effect.
+  </p>
+  <script src="https://gist.github.com/aroc/7cad6589df671dd021d2.js"></script>
+
+  <h4>
+    deselectSection(sectionId)
+  </h4>
+  <p>
+    <strong>Description:</strong> De-select a section and make it inactive, hiding the side comments. If the side comments are already hidden, this method will have no effect.
+  </p>
+  <script src="https://gist.github.com/aroc/6db0193d3a31030926c3.js"></script>
+
+  <h4>
+    setCurrentUser(currentUser)
+  </h4>
+  <p>
+    <strong>Description:</strong> Sets the currentUser to be used for all new comments.
+  </p>
+  <script src="https://gist.github.com/aroc/106df5b9b5356dc4c074.js"></script>
+
+  <h4>
+    removeCurrentUser()
+  </h4>
+  <p>
+    <strong>Description:</strong> Removes the currentUser. Without a currentUser, comments amy not be posted. Instead, the <code>addCommentAttempted</code> event gets triggered when a user clicks the "Add Comment" button.
   </p>
 
   <h4>
-    Events
+    insertComment(comment)
   </h4>
+  <p>
+    <strong>Description:</strong> Inserts a comment into the markup. It will insert into the section specified by the comment object.
+  </p>
+  <script src="https://gist.github.com/aroc/9e1ef2ec334440a39abb.js"></script>
+
+  <h4>
+    commentsAreVisible()
+  </h4>
+  <p>
+    <strong>Description:</strong> Returns true if the comments are visbile, false if they are not.
+  </p>
+
+  <h4>
+    destroy()
+  </h4>
+  <p>
+    <strong>Description:</strong> Removing the sideComments object, cleaning up any event bindings and removing any markup from the DOM.
+  </p>
+
+  <h3>
+    Events
+  </h3>
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <td>
+          Event Name
+        </td>
+        <td>
+          Values Passed
+        </td>
+        <td>
+          Description
+        </td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          commentPosted
+        </td>
+        <td>
+          comment (Object)
+        </td>
+        <td>
+          Fired after a user fills out the comment form and clicks "Post".
+        </td>
+      </tr>
+      <tr>
+        <td>
+          addCommentAttempted
+        </td>
+        <td>
+          None
+        </td>
+        <td>
+          Fired when a sideComments object doesn't have a current user and the "Add Comment" button is clicked.
+        </td>
+      </tr>
+      <tr>
+        <td>
+          commentDeleted
+        </td>
+        <td>
+          commentId (Integer)
+        </td>
+        <td>
+          Fired after a user has clicked "Delete" on one of their comments and has confirmed with the dialog that they do want to delete.
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
