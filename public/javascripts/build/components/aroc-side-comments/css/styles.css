@@ -29,8 +29,8 @@
   transition: all .15s ease;
 }
 .side-comments-open {
-  -webkit-transform: translate3d(-200px, 0, 0);
-  transform: translate3d(-200px, 0, 0);
+  -webkit-transform: translate3d(-280px, 0, 0);
+  transform: translate3d(-280px, 0, 0);
 }
 .commentable-section {
   position: relative;
@@ -45,6 +45,11 @@
   width: 80px;
   min-height: 100%;
   height: 100%;
+}
+.side-comment * {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 .side-comment .hide {
   display: none;
@@ -79,7 +84,8 @@
   font-size: 12px;
 }
 .side-comment.active .marker,
-.side-comment.has-comments .marker {
+.side-comment.has-comments .marker,
+.side-comment.has-comments ul.comments {
   display: block;
 }
 .side-comment .marker:after {
@@ -131,11 +137,13 @@
   width: 280px;
   padding-bottom: 120px;
 }
-.side-comment .comments-wrapper ul.comments {
+.side-comment .comments {
   list-style: none;
   padding: 0;
+  margin: 0;
+  display: none;
 }
-.side-comment .comments-wrapper ul.comments li {
+.side-comment .comments li {
   overflow: hidden;
 }
 .side-comment .author-avatar {
@@ -150,7 +158,6 @@
 }
 .side-comment .author-name {
   float: left;
-  margin: 0 0 5px 0;
   width: 238px;
 }
 .side-comment .comment-box:empty:not(:focus):before {
@@ -174,6 +181,9 @@
 .side-comment .add-comment.active {
   display: block;
 }
+.side-comment .comment-form {
+  overflow: hidden;
+}
 .side-comment .comment-form.active {
   display: block;
 }
@@ -190,22 +200,26 @@
   top: -22px;
 }
 .side-comment.has-comments .comments-wrapper {
-  top: -37px;
+  top: -22px;
 }
-.side-comment ul.comments li {
+.side-comment ul.comments li,
+.side-comment .comment-form {
   border: 1px solid #F2F2F0;
   border-left: 0;
   border-right: 0;
   padding: 15px 0;
   margin-top: -1px;
 }
-.side-comment ul.comments li .author-name {
-  font-size: 15px;
-  font-weight: 700;
-}
-.side-comment ul.comments li .comment {
+.side-comment .comment,
+.side-comment .comment-box {
   font-size: 14px;
   line-height: 18px;
+}
+.side-comment .author-name {
+  font-size: 15px;
+  line-height: 16px;
+  margin: 0 0 2px 0;
+  font-weight: 700;
 }
 .side-comment .action-link {
   color: #B3B3B1;
@@ -233,21 +247,26 @@
   padding: 0px 8px;
   letter-spacing: 0.05em;
   text-decoration: none;
+  margin-top: 10px;
 }
 .side-comment .add-comment:before {
   content: "+";
   border: 2px solid #DEDEDC;
-  border-radius: 309px;
-  width: 18px;
-  height: 18px;
+  border-radius: 100px;
+  width: 22px;
+  height: 22px;
   color: #DEDEDC;
   display: block;
   text-align: center;
   font-size: 16px;
-  line-height: 17px;
+  font-weight: 400;
+  line-height: 18px;
   float: left;
   margin-right: 15px;
   letter-spacing: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 .side-comment .add-comment:hover {
   text-decoration: none;
@@ -261,8 +280,6 @@
 }
 .side-comment .comment-box:empty:not(:focus):before {
   color: #B5B5B5;
-  font-size: 15px;
-  line-height: 18px;
 }
 .side-comment .actions {
   margin-top: 5px;
