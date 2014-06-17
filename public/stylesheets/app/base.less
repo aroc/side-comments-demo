@@ -33,9 +33,7 @@
 	h1 {
 		font-size: 72px;
 		line-height: 72px;
-		font-family: 'Sansita One', Sans-serif;
 		margin: 0;
-		font-weight: 300;
 	}
 
 	h2 {
@@ -44,6 +42,11 @@
 		font-style: italic;
 		font-weight: 400;
 	}
+}
+
+.logo {
+	font-family: 'Sansita One', Sans-serif;
+	font-weight: 300;
 }
 
 #header-bg-vid {
@@ -83,8 +86,18 @@
 #navbar {
 	height: 60px;
 	background: #359D64;
+	overflow: hidden;
+	width: 100%;
 
+	.logo {
+		margin-right: 20px;
+		text-shadow: rgba(0,0,0, 0.3);
+		font-size: 22px;
+		line-height: 60px;
+		display: none;
+	}
 	ul {
+		float: left;
 		margin: 0 auto;
 		list-style: none;
 		padding: 0;
@@ -103,6 +116,24 @@
 		&:hover {
 			color: #FFF;
 		}
+	}
+}
+
+.fixed-navbar {
+	#navbar {
+		position: fixed;
+		left: 0;
+		top: 0;
+		z-index: 1000;
+
+		.logo {
+			display: block;
+			float: left;
+		}
+	}
+
+	.section-header {
+		padding-top: 120px;
 	}
 }
 

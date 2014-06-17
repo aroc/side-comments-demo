@@ -13583,4 +13583,17 @@ $(document).ready(function(){
     }
   });
 
+  $(window).on('scroll', function( event ) {
+    var $overlay = $('#header .overlay');
+    var $body = $('body');
+
+    console.log('inside scroll cb');
+
+    if ($(window).scrollTop() >= $overlay.offset().top + $overlay.height()) {
+      $('body').addClass('fixed-navbar');
+    } else {
+      $('body').removeClass('fixed-navbar');
+    }
+  });
+
 });
