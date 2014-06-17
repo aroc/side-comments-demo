@@ -10784,7 +10784,7 @@ SideComments.prototype.commentPosted = function( comment ) {
 
 /**
  * Fired when the commentDeleted event is triggered.
- * @param  {Integer} comment  The commentId of the deleted comment.
+ * @param  {Object} comment  The commentId of the deleted comment.
  */
 SideComments.prototype.commentDeleted = function( comment ) {
   this.emit('commentDeleted', comment);
@@ -10809,8 +10809,8 @@ SideComments.prototype.insertComment = function( comment ) {
 
 /**
  * Removes the given comment from the right section.
- * @param  {Integer} sectionId The ID of the section where the comment exists.
- * @param  {Integer} commentId The ID of the comment to be removed.
+ * @param sectionId The ID of the section where the comment exists.
+ * @param commentId The ID of the comment to be removed.
  */
 SideComments.prototype.removeComment = function( sectionId, commentId ) {
   var section = _.find(this.sections, { id: sectionId });
@@ -10819,8 +10819,8 @@ SideComments.prototype.removeComment = function( sectionId, commentId ) {
 
 /**
  * Delete the comment specified by the given sectionID and commentID.
- * @param  {Integer} sectionId The section the comment belongs to.
- * @param  {Integer} commentId The comment's ID
+ * @param sectionId The section the comment belongs to.
+ * @param commentId The comment's ID
  */
 SideComments.prototype.deleteComment = function( sectionId, commentId ) {
   var section = _.find(this.sections, { id: sectionId });
@@ -11071,7 +11071,7 @@ Section.prototype.deleteComment = function( commentId ) {
 
 /**
  * Removes the comment from the list of comments and the comment array.
- * @param {Integer} commentId The ID of the comment to be removed from this section.
+ * @param commentId The ID of the comment to be removed from this section.
  */
 Section.prototype.removeComment = function( commentId ) {
 	this.comments = _.reject(this.comments, { id: commentId });
@@ -13552,37 +13552,61 @@ require.alias("aroc-side-comments/js/main.js", "side-comments/index.js");
 require.alias("component-emitter/index.js", "aroc-side-comments/deps/emitter/index.js");
 
 require.alias("aroc-side-comments/js/main.js", "aroc-side-comments/index.js");
+var existingComments = [
+  {
+    "sectionId": "1",
+    "comments": [
+      {
+        "authorAvatarUrl": "http://f.cl.ly/items/1W303Y360b260u3v1P0T/jon_snow_small.png",
+        "authorName": "Jon Sno",
+        "comment": "I'm Ned Stark's bastard. Related: I know nothing."
+      },
+      {
+        "authorAvatarUrl": "http://f.cl.ly/items/2o1a3d2f051L0V0q1p19/donald_draper.png",
+        "authorName": "Donald Draper",
+        "comment": "I need a scotch."
+      }
+    ]
+  },
+  {
+    "sectionId": "3",
+    "comments": [
+      {
+        "authorAvatarUrl": "http://f.cl.ly/items/0l1j230k080S0N1P0M3e/clay-davis.png",
+        "authorName": "Senator Clay Davis",
+        "comment": "These Side Comments are incredible. Sssshhhiiiiieeeee."
+      }
+    ]
+  }
+];
+
 var SideComments = require('side-comments');
 
 $(document).ready(function(){
 
-  function initSideComments( existingComments ) {
-    sideComments = new SideComments(
-      '#commentable-container',
-      {
-        id: 1,
-        avatarUrl: "http://f.cl.ly/items/0s1a0q1y2Z2k2I193k1y/default-user.png",
-        name: "You"
-      },
-      existingComments
-    );
-    sideComments.on('commentPosted', function( comment ) {
-      comment.id = parseInt(Math.random() * (1000000 - 1) + 1);
-      sideComments.insertComment(comment);
-    });
-  }
-
-  $.ajax({
-    url: 'http://localhost:3000/comments',
-    type: 'GET',
-    success: function( results ) {
-      initSideComments(results);
+  // Init side-comments.
+  var sideComments = new SideComments(
+    '#commentable-container',
+    {
+      id: 1,
+      avatarUrl: "http://f.cl.ly/items/0s1a0q1y2Z2k2I193k1y/default-user.png",
+      name: "You"
     },
-    error: function( xhr, status, error ) {
-      console.log('Oh noes! An error!');
-    }
+    existingComments
+  );
+
+  // Bind comments posted.
+  sideComments.on('commentPosted', function( comment ) {
+    comment.id = parseInt(Math.random() * (1000000 - 1) + 1);
+    sideComments.insertComment(comment);
   });
 
+  // Bind deleted comments.
+  sideComments.on('commentDeleted', function( comment ) {
+    sideComments.removeComment(comment.sectionId, comment.id);
+  });
+
+  // Fixed nav on scroll.
   $(window).on('scroll', function( event ) {
     var $overlay = $('#header .overlay');
     var $body = $('body');
