@@ -29,6 +29,9 @@ thead td {
 .commentable-section {
   font-size: 18px;
 }
+a {
+  color: #2C97DE;
+}
 .btn {
   border-radius: 100px;
   padding: 15px 30px;
@@ -364,6 +367,30 @@ table th[class*="col-"] {
 }
 #main-content {
   background: #FFF;
+}
+#footer {
+  background: #222;
+  min-height: 200px;
+  padding: 20px 0;
+  margin-top: 60px;
+  overflow: hidden;
+}
+#footer p {
+  color: #999;
+  font-size: 16px;
+}
+#footer ul.nav li i {
+  margin-right: 8px;
+}
+#footer p.attribution {
+  color: #575757;
+}
+#footer p.attribution i {
+  color: #A23627;
+}
+#footer p.attribution a {
+  color: #32688B;
+  font-weight: 700;
 }
 .section-header {
   padding: 40px 0;
