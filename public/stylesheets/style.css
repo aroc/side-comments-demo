@@ -283,6 +283,131 @@ table th[class*="col-"] {
     border-bottom: 0;
   }
 }
+#nav {
+  height: 60px;
+  background: #359D64;
+  overflow: hidden;
+  width: 100%;
+  z-index: 1100;
+}
+#nav .logo {
+  display: none;
+  margin-right: 20px;
+  text-shadow: rgba(0, 0, 0, 0.3);
+  font-size: 22px;
+  line-height: 60px;
+  float: left;
+}
+#nav ul {
+  float: left;
+  margin: 0 auto;
+  list-style: none;
+  padding: 0;
+}
+#nav li {
+  float: left;
+  padding: 0 20px;
+}
+#nav ul a,
+#nav a.logo {
+  line-height: 60px;
+}
+#nav a {
+  color: #DDD;
+  text-decoration: none;
+}
+#nav a:hover {
+  color: #FFF;
+}
+body.fixed-nav .section-header {
+  padding-top: 80px;
+}
+body.fixed-nav #nav {
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+body.fixed-nav #nav .logo {
+  display: block;
+}
+#mobile-menu-btn {
+  float: right;
+  display: none;
+  border: 2px solid #DDD;
+  text-transform: uppercase;
+  color: #DDD;
+  font-size: 14px;
+  line-height: 14px;
+  padding: 8px 10px;
+  position: relative;
+  top: 12px;
+  font-weight: 700;
+}
+#mobile-menu-btn:hover {
+  border-color: #FFF;
+  color: #FFF;
+}
+#close-nav-overlay {
+  float: right;
+  display: none;
+  font-size: 42px;
+  line-height: 60px;
+  font-weight: 300;
+}
+#close-nav-overlay:hover {
+  text-decoration: none;
+}
+@media (max-width: 40rem) {
+  #header h1.logo {
+    padding-top: 40px;
+    font-size: 280%;
+  }
+  #nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+  #nav #mobile-menu-btn {
+    display: block;
+  }
+  #nav ul {
+    display: none;
+  }
+}
+#nav.show-mobile {
+  position: fixed;
+  height: 100%;
+  top: 0;
+  left: 0;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  background: #359D64;
+}
+#nav.show-mobile .logo {
+  display: block;
+  width: 100%;
+}
+#nav.show-mobile #mobile-menu-btn {
+  display: none;
+}
+#nav.show-mobile #close-nav-overlay {
+  display: block;
+  margin-top: -60px;
+}
+#nav.show-mobile ul {
+  display: block;
+}
+#nav.show-mobile li {
+  float: none;
+}
+#nav.show-mobile li a {
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 40px;
+}
+#nav.show-mobile li a i {
+  width: 30px;
+}
 #header {
   background: #1A5132;
   min-height: 350px;
@@ -346,50 +471,6 @@ table th[class*="col-"] {
 #cta:hover {
   background: #FFF;
   color: #1A5132;
-}
-#navbar {
-  height: 60px;
-  background: #359D64;
-  overflow: hidden;
-  width: 100%;
-}
-#navbar .logo {
-  margin-right: 20px;
-  text-shadow: rgba(0, 0, 0, 0.3);
-  font-size: 22px;
-  line-height: 60px;
-  display: none;
-}
-#navbar ul {
-  float: left;
-  margin: 0 auto;
-  list-style: none;
-  padding: 0;
-}
-#navbar li {
-  float: left;
-  padding: 0 20px;
-}
-#navbar a {
-  color: #DDD;
-  text-decoration: none;
-  line-height: 60px;
-}
-#navbar a:hover {
-  color: #FFF;
-}
-.fixed-navbar #navbar {
-  position: fixed;
-  left: 0;
-  top: 0;
-  z-index: 1000;
-}
-.fixed-navbar #navbar .logo {
-  display: block;
-  float: left;
-}
-.fixed-navbar .section-header {
-  padding-top: 120px;
 }
 #main-content {
   background: #FFF;

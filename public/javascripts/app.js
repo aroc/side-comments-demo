@@ -13610,14 +13610,22 @@ $(document).ready(function(){
   $(window).on('scroll', function( event ) {
     var $overlay = $('#header .overlay');
     var $body = $('body');
-
-    console.log('inside scroll cb');
+    var fixedClass = 'fixed-nav';
 
     if ($(window).scrollTop() >= $overlay.offset().top + $overlay.height()) {
-      $('body').addClass('fixed-navbar');
+      $('body').addClass(fixedClass);
     } else {
-      $('body').removeClass('fixed-navbar');
+      $('body').removeClass(fixedClass);
     }
+  });
+
+  $('#mobile-menu-btn').on('click', function( event ) {
+    event.preventDefault();
+    $('#nav').addClass('show-mobile');
+  });
+
+  $(document).on('click', '#nav.show-mobile ul a, #nav.show-mobile .logo, #close-nav-overlay', function( event ) {
+    $('#nav').removeClass('show-mobile');
   });
 
 });
