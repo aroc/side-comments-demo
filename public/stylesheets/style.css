@@ -424,14 +424,14 @@ pre {
 .include-in-project .alert {
   margin: 20px 0;
 }
-.margin-bottom {
+.margin-bottom-small {
+  margin-bottom: 15px;
+}
+.margin-bottom-big {
   margin-bottom: 40px;
 }
 .gist .gist-file .gist-data .line-pre {
   font-family: "Consolas", "Liberation Mono", Courier, monospace;
-}
-.getting-started h4 {
-  margin-bottom: 15px;
 }
 .arguments-list li {
   margin: 0 0 20px 0;

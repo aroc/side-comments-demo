@@ -43,16 +43,6 @@
   
   <div class="doc-section">
     <h4>
-      selectSection(sectionId)
-    </h4>
-    <p>
-      <strong>Description:</strong> Select a section and make it active, showing the side comments. If the side comments are already shown, then the currently active section will hide and this section will display. If this section is arleady active, then this method will have no effect.
-    </p>
-    <script src="https://gist.github.com/aroc/7cad6589df671dd021d2.js"></script>
-  </div>
-  
-  <div class="doc-section">
-    <h4>
       deselectSection(sectionId)
     </h4>
     <p>
@@ -88,6 +78,16 @@
       <strong>Description:</strong> Inserts a comment into the markup. It will insert into the section specified by the comment object.
     </p>
     <script src="https://gist.github.com/aroc/9e1ef2ec334440a39abb.js"></script>
+  </div>
+
+  <div class="doc-section">
+    <h4>
+      removeComment(sectionId, commentId)
+    </h4>
+    <p>
+      <strong>Description:</strong> Removes a comment from the SideComments object and from the markup.
+    </p>
+    {{!-- TODO: Gist embed --}}
   </div>
   
   <div class="doc-section">
@@ -154,10 +154,10 @@
           commentDeleted
         </td>
         <td>
-          commentId (Integer)
+          comment (Object)
         </td>
         <td>
-          Fired after a user has clicked "Delete" on one of their comments and has confirmed with the dialog that they do want to delete.
+          Fired after a user has clicked "Delete" on one of their comments and has confirmed with the dialog that they do want to delete it.
         </td>
       </tr>
     </tbody>
