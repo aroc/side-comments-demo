@@ -370,7 +370,10 @@ body.fixed-nav #nav .logo {
     display: none;
   }
 }
-#nav.show-mobile {
+body.show-mobile {
+  overflow: hidden;
+}
+body.show-mobile #nav {
   position: fixed;
   height: 100%;
   top: 0;
@@ -379,29 +382,29 @@ body.fixed-nav #nav .logo {
   overflow-y: scroll;
   background: #359D64;
 }
-#nav.show-mobile .logo {
+body.show-mobile #nav .logo {
   display: block;
   width: 100%;
 }
-#nav.show-mobile #mobile-menu-btn {
+body.show-mobile #nav #mobile-menu-btn {
   display: none;
 }
-#nav.show-mobile #close-nav-overlay {
+body.show-mobile #nav #close-nav-overlay {
   display: block;
   margin-top: -60px;
 }
-#nav.show-mobile ul {
+body.show-mobile #nav ul {
   display: block;
 }
-#nav.show-mobile li {
+body.show-mobile #nav li {
   float: none;
 }
-#nav.show-mobile li a {
+body.show-mobile #nav li a {
   font-size: 20px;
   font-weight: 300;
   line-height: 40px;
 }
-#nav.show-mobile li a i {
+body.show-mobile #nav li a i {
   width: 30px;
 }
 #header {

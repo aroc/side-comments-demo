@@ -106,43 +106,47 @@ body.fixed-nav {
 
 }
 
-#nav.show-mobile {
-	position: fixed;
-	height: 100%;
-	top: 0;
-	left: 0;
-	overflow-x: hidden;
-	overflow-y: scroll;
-	background: #359D64;
+body.show-mobile {
+	overflow: hidden;
+	
+	#nav {
+		position: fixed;
+		height: 100%;
+		top: 0;
+		left: 0;
+		overflow-x: hidden;
+		overflow-y: scroll;
+		background: #359D64;
 
-	.logo {
-		display: block;
-		width: 100%
-	}
+		.logo {
+			display: block;
+			width: 100%
+		}
 
-	#mobile-menu-btn {
-		display: none;
-	}
+		#mobile-menu-btn {
+			display: none;
+		}
 
-	#close-nav-overlay {
-		display: block;
-		margin-top: -60px;
-	}
+		#close-nav-overlay {
+			display: block;
+			margin-top: -60px;
+		}
 
-	ul {
-		display: block;
-	}
+		ul {
+			display: block;
+		}
 
-	li {
-		float: none;
+		li {
+			float: none;
 
-		a {
-			font-size: 20px;
-			font-weight: 300;
-			line-height: 40px;
+			a {
+				font-size: 20px;
+				font-weight: 300;
+				line-height: 40px;
 
-			i {
-				width: 30px;
+				i {
+					width: 30px;
+				}
 			}
 		}
 	}

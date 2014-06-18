@@ -67,15 +67,15 @@ $(document).ready(function(){
 
   $('#mobile-menu-btn').on('click', function( event ) {
     event.preventDefault();
-    $('#nav').addClass('show-mobile');
+    $('body').addClass('show-mobile');
   });
 
-  $(document).on('click', '#nav.show-mobile ul a, #nav.show-mobile .logo, #close-nav-overlay', function( event ) {
+  $(document).on('click', '.show-mobile #nav ul a, .show-mobile #nav .logo, #close-nav-overlay', function( event ) {
     var $target = $(event.target);
     if ($target.attr('id') == 'close-nav-overlay') {
       event.preventDefault();
     }
-    $('#nav').removeClass('show-mobile');
+    $('body').removeClass('show-mobile');
   });
 
 });
