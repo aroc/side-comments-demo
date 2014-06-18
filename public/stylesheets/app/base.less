@@ -76,9 +76,11 @@
 #cta {
 	display: block;
 	margin: 35px auto 0 auto;
-	width: 400px;
 	color: #FFF;
 	border: 1px solid #FFF;
+	width: 90%;
+	max-width: 400px;
+	font-size: 100%;
 
 	&:hover {
 		background: #FFF;
@@ -214,4 +216,19 @@ code, pre {
 	padding: 20px 20px 20px 30px;
 	background: #FAFAFA;
 	margin-bottom: 20px;
+}
+
+@media (max-width: 767px) {
+
+	#header h1 {
+		padding-top: 40px;
+		font-size: 38px;
+		line-height: 38px;
+		margin-bottom: 15px;
+	}
+
+	#commentable-container {
+		width: 58%;
+	}	
+
 }

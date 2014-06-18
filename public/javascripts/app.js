@@ -13625,6 +13625,10 @@ $(document).ready(function(){
   });
 
   $(document).on('click', '#nav.show-mobile ul a, #nav.show-mobile .logo, #close-nav-overlay', function( event ) {
+    var $target = $(event.target);
+    if ($target.attr('id') == 'close-nav-overlay') {
+      event.preventDefault();
+    }
     $('#nav').removeClass('show-mobile');
   });
 
