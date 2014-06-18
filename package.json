@@ -6,20 +6,24 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
-    "gulp": "*",
-    "gulp-concat": "*",
-    "gulp-uglify": "*",
-    "gulp-minify-css": "*",
-    "gulp-autoprefixer": "*",
-    "gulp-less": "*",
     "express": "~4.0.0",
     "static-favicon": "~1.0.0",
     "morgan": "~1.0.0",
     "cookie-parser": "~1.0.1",
     "body-parser": "~1.0.0",
     "debug": "~0.7.4",
-    "jade": "~1.3.0",
     "express-hbs": "~0.7.9",
-    "less-middleware": "0.1.15"
+    "less-middleware": "0.1.15",
+    "handlebars": "*",
+    "gulp-compile-handlebars": "^0.2.0",
+    "gulp-handlebars": "*",
+    "gulp-rename": "*",
+    "gulp": "*",
+    "gulp-concat": "*",
+    "gulp-uglify": "*",
+    "gulp-minify-css": "*",
+    "gulp-autoprefixer": "*",
+    "gulp-less": "*",
+    "gulp-define-module": "*"
   }
 }
