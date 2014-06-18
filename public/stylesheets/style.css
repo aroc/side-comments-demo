@@ -435,6 +435,18 @@ body.fixed-nav #nav .logo {
   font-style: italic;
   font-weight: 400;
 }
+#header .version {
+  text-align: center;
+  margin: 5px 0 0 0;
+  font-size: 13px;
+  color: #DDD;
+}
+#header iframe {
+  position: relative;
+  left: 50%;
+  margin-left: -60px;
+  top: 20px;
+}
 .logo {
   font-family: 'Sansita One', Sans-serif;
   font-weight: 300;
@@ -582,7 +594,7 @@ pre {
     margin-bottom: 15px;
   }
   #header-bg-vid {
-    width: 160%;
+    width: 190%;
     top: 0;
   }
   #commentable-container {
