@@ -63,7 +63,7 @@ gulp.task('build-static-index', function () {
 gulp.task('watch', function() {
   gulp.watch(paths.scripts, ['scripts']);
   gulp.watch('public/stylesheets/app/*.less', ['less']);
-  gulp.watch('templates/*.hbs', ['templates', 'build-static-index']);
+  gulp.watch(['templates/*.hbs', 'templates/partials/*.hbs'], ['templates', 'build-static-index']);
 });
 
 // The default task (called when you run `gulp` from cli)
