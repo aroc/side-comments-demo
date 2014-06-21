@@ -614,7 +614,7 @@ p.attribution a {
   #commentable-container p.commentable-section {
     margin-right: 60px;
   }
-  table td {
+  table tbody td {
     word-break: break-all;
   }
 }
