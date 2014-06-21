@@ -357,11 +357,14 @@ body.fixed-nav #nav .logo {
 #close-nav-overlay:hover {
   text-decoration: none;
 }
-@media (max-width: 767px) {
+@media (max-width: 40em) {
   #nav {
     position: fixed;
     top: 0;
     left: 0;
+  }
+  #nav .logo {
+    display: block;
   }
   #nav #mobile-menu-btn {
     display: block;
@@ -407,8 +410,33 @@ body.show-mobile #nav li a {
 body.show-mobile #nav li a i {
   width: 30px;
 }
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+code,
+pre {
+  margin: 0;
+  border: 1px solid #ddd;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+  padding: 2px  4px;
+  font-family: "Inconsolata", "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 15px;
+  display: inline;
+  text-align: left;
+}
+.margin-bottom-small {
+  margin-bottom: 15px;
+}
+.margin-bottom-big {
+  margin-bottom: 40px;
+}
+.gist .gist-file .gist-data .line-pre {
+  font-family: "Consolas", "Liberation Mono", Courier, monospace;
+}
 #header {
-  background: #1A5132;
   min-height: 350px;
   padding: 60px 0px;
   overflow: none;
@@ -430,7 +458,6 @@ body.show-mobile #nav li a i {
 #header h1 {
   font-size: 72px;
   line-height: 72px;
-  margin: 0;
 }
 #header h2 {
   font-size: 24px;
@@ -438,39 +465,35 @@ body.show-mobile #nav li a i {
   font-style: italic;
   font-weight: 400;
 }
-#header .version {
-  text-align: center;
-  margin: 5px 0 0 0;
-  font-size: 13px;
-  color: #DDD;
-}
 #header iframe {
   position: relative;
   left: 50%;
   margin-left: -60px;
   top: 20px;
 }
-.logo {
-  font-family: 'Sansita One', Sans-serif;
-  font-weight: 300;
-}
-#header-bg-vid {
-  width: 100%;
-  position: absolute;
-  z-index: 1;
-  top: -30%;
-  left: 0px;
-  background: url('../images/typing.png') no-repeat;
-}
-.over-vid {
-  position: relative;
-  z-index: 10;
+.version {
+  text-align: center;
+  margin: 5px 0 0 0;
+  font-size: 13px;
+  color: #DDD;
 }
 .main-heading {
   color: #FFF;
   text-align: center;
   margin: 0;
   text-shadow: 1px 2px 2px rgba(0, 0, 0, 0.4);
+}
+.logo {
+  font-family: 'Sansita One', Sans-serif;
+  font-weight: 300;
+}
+#video {
+  width: 100%;
+  position: absolute;
+  z-index: -1;
+  top: -30%;
+  left: 0px;
+  background: url('../images/typing.png') no-repeat;
 }
 #cta {
   display: block;
@@ -499,16 +522,16 @@ body.show-mobile #nav li a i {
   color: #999;
   font-size: 16px;
 }
-#footer ul.nav li i {
+.footer-nav li i {
   margin-right: 8px;
 }
-#footer p.attribution {
+p.attribution {
   color: #575757;
 }
-#footer p.attribution i {
+p.attribution i {
   color: #A23627;
 }
-#footer p.attribution a {
+p.attribution a {
   color: #32688B;
   font-weight: 700;
 }
@@ -532,23 +555,6 @@ body.show-mobile #nav li a i {
   border-bottom: 4px solid #DDD;
   padding-bottom: 20px;
 }
-ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-code,
-pre {
-  margin: 0;
-  border: 1px solid #ddd;
-  background-color: #f8f8f8;
-  border-radius: 3px;
-  padding: 2px  4px;
-  font-family: "Inconsolata", "Liberation Mono", Menlo, Courier, monospace;
-  font-size: 15px;
-  display: inline;
-  text-align: left;
-}
 .download-options h3 {
   margin-bottom: 20px;
 }
@@ -571,15 +577,6 @@ pre {
 .include-in-project .alert {
   margin: 20px 0;
 }
-.margin-bottom-small {
-  margin-bottom: 15px;
-}
-.margin-bottom-big {
-  margin-bottom: 40px;
-}
-.gist .gist-file .gist-data .line-pre {
-  font-family: "Consolas", "Liberation Mono", Courier, monospace;
-}
 .arguments-list li {
   margin: 0 0 20px 0;
 }
@@ -589,16 +586,26 @@ pre {
   background: #FAFAFA;
   margin-bottom: 20px;
 }
-@media (max-width: 767px) {
+@media (max-width: 64em) {
+  #video {
+    top: auto;
+    bottom: -10%;
+  }
+}
+@media (max-width: 40em) {
+  #header {
+    background: url('../../public/images/typing.png') top center no-repeat;
+    -webkit-background-size: cover;
+    background-size: cover;
+  }
   #header h1 {
     padding-top: 40px;
     font-size: 38px;
     line-height: 38px;
     margin-bottom: 15px;
   }
-  #header-bg-vid {
-    width: 190%;
-    top: 0;
+  #video {
+    display: none;
   }
   #commentable-container {
     width: 58%;
