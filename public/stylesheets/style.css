@@ -608,7 +608,7 @@ p.attribution a {
   #video {
     display: none;
   }
-  #commentable-container {
-    width: 58%;
+  #commentable-container p {
+    margin-right: 60px;
   }
 }
