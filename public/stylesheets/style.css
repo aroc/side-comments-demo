@@ -436,6 +436,9 @@ pre {
 .gist .gist-file .gist-data .line-pre {
   font-family: "Consolas", "Liberation Mono", Courier, monospace;
 }
+body {
+  -webkit-overflow-scrolling: touch;
+}
 #header {
   min-height: 350px;
   padding: 60px 0px;
