@@ -535,6 +535,9 @@ p.attribution a {
   color: #32688B;
   font-weight: 700;
 }
+#commentable-container {
+  width: 80%;
+}
 .section-header {
   padding: 40px 0;
   margin: 20px 0;
@@ -608,7 +611,7 @@ p.attribution a {
   #video {
     display: none;
   }
-  #commentable-container p {
+  #commentable-container p.commentable-section {
     margin-right: 60px;
   }
 }
