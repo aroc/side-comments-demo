@@ -586,6 +586,12 @@ p.attribution a {
   background: #FAFAFA;
   margin-bottom: 20px;
 }
+@media (max-width: 64em) {
+  #video {
+    top: auto;
+    bottom: -10%;
+  }
+}
 @media (max-width: 40em) {
   #header {
     background: url('../../public/images/typing.png') top center no-repeat;
