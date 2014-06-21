@@ -585,6 +585,7 @@ p.attribution a {
   padding: 20px 20px 20px 30px;
   background: #FAFAFA;
   margin-bottom: 20px;
+  word-break: break-all;
 }
 @media (max-width: 64em) {
   #video {
