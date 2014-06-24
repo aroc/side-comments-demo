@@ -614,7 +614,7 @@ p.attribution a {
   #video {
     display: none;
   }
-  #commentable-container p.commentable-section {
+  #commentable-container .commentable-section {
     margin-right: 60px;
   }
   table tbody td {
