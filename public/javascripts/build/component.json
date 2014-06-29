@@ -1,6 +1,7 @@
 {
   "name": "side-comments-demo",
   "dependencies": {
-    "aroc/side-comments": "*"
+    "aroc/side-comments": "*",
+    "ftlabs/fastclick": "*"
   }
 }

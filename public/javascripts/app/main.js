@@ -1,3 +1,6 @@
+var attachFastClick = require('fastclick');
+attachFastClick(document.body);
+
 var existingComments = [
   {
     "sectionId": "1",
