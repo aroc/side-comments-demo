@@ -10904,7 +10904,7 @@ function Section( eventPipe, $el, currentUser, comments ) {
 	this.$el = $el;
 	this.comments = comments ? comments.comments : [];
 	this.currentUser = currentUser || null;
-	this.clickEventName = mobileCheck() ? 'tap' : 'click';
+	this.clickEventName = mobileCheck() ? 'touchstart' : 'click';
 	
 	this.id = $el.data('section-id');
 
@@ -10921,6 +10921,7 @@ function Section( eventPipe, $el, currentUser, comments ) {
  * @param  {Object} event The event object.
  */
 Section.prototype.markerClick = function( event ) {
+	console.log('clicked');
 	event.preventDefault();
 	this.select();
 };
