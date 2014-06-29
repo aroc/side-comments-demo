@@ -614,9 +614,6 @@ p.attribution a {
   #video {
     display: none;
   }
-  #commentable-container .commentable-section {
-    margin-right: 60px;
-  }
   table tbody td {
     word-break: break-all;
   }
