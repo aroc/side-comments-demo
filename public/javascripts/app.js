@@ -10678,7 +10678,6 @@ require.register("aroc-side-comments/js/main.js", function(exports, require, mod
 var _ = require('./vendor/lodash-custom.js');
 var Section = require('./section.js');
 var Emitter = require('emitter');
-var eventPipe = new Emitter;
 
 /**
  * Creates a new SideComments instance.
@@ -10696,7 +10695,7 @@ var eventPipe = new Emitter;
 function SideComments( el, currentUser, existingComments ) {
   this.$el = $(el);
   this.$body = $('body');
-  this.eventPipe = eventPipe;
+  this.eventPipe = new Emitter;
 
   this.currentUser = _.clone(currentUser) || null;
   this.existingComments = _.cloneDeep(existingComments) || [];
@@ -10886,6 +10885,7 @@ SideComments.prototype.destroy = function() {
 };
 
 module.exports = SideComments;
+
 });
 require.register("aroc-side-comments/js/section.js", function(exports, require, module){
 var _ = require('./vendor/lodash-custom.js');
@@ -11013,7 +11013,8 @@ Section.prototype.postComment = function() {
   	comment: commentBody,
   	authorAvatarUrl: this.currentUser.avatarUrl,
   	authorName: this.currentUser.name,
-  	authorId: this.currentUser.id
+  	authorId: this.currentUser.id,
+  	authorUrl: this.currentUser.authorUrl || null
   };
   this.eventPipe.emit('commentPosted', comment);
 };
@@ -14373,7 +14374,7 @@ require.register("aroc-side-comments/templates/section.html", function(exports, 
 module.exports = '<div class="side-comment <%= sectionClasses %>">\n  <a href="#" class="marker">\n    <span><%= comments.length %></span>\n  </a>\n  \n  <div class="comments-wrapper">\n    <ul class="comments">\n      <% _.each(comments, function( comment ){ %>\n        <%= _.template(commentTemplate, { comment: comment, currentUser: currentUser }) %>\n      <% }) %>\n    </ul>\n    \n    <a href="#" class="add-comment">Leave a comment</a>\n    \n    <% if (currentUser){ %>\n      <div class="comment-form">\n        <div class="author-avatar">\n          <img src="<%= currentUser.avatarUrl %>">\n        </div>\n        <p class="author-name">\n          <%= currentUser.name %>\n        </p>\n        <div class="comment-box right-of-avatar" contenteditable="true" data-placeholder-content="Leave a comment..."></div>\n        <div class="actions right-of-avatar">\n          <a href="#" class="action-link post">Post</a>\n          <a href="#" class="action-link cancel">Cancel</a>\n        </div>\n      </div>\n    <% } %>\n  </div>\n</div>';
 });
 require.register("aroc-side-comments/templates/comment.html", function(exports, require, module){
-module.exports = '<li data-comment-id="<%= comment.id %>">\n  <div class="author-avatar">\n    <img src="<%= comment.authorAvatarUrl %>">\n  </div>\n  <p class="author-name right-of-avatar">\n    <%= comment.authorName %>\n  </p>\n  <p class="comment right-of-avatar">\n    <%= comment.comment %>\n  </p>\n  <% if (currentUser && comment.authorId === currentUser.id){ %>\n  <a href="#" class="action-link delete">Delete</a>\n  <% } %>\n</li>';
+module.exports = '<li data-comment-id="<%= comment.id %>">\n  <div class="author-avatar">\n    <img src="<%= comment.authorAvatarUrl %>">\n  </div>\n  <% if (comment.authorUrl) { %>\n    <a class="author-name right-of-avatar" href="<%= comment.authorUrl %>">\n      <%= comment.authorName %>\n    </a>\n  <% } else { %>\n    <p class="author-name right-of-avatar">\n      <%= comment.authorName %>\n    </p>\n  <% } %>\n  <p class="comment right-of-avatar">\n    <%= comment.comment %>\n  </p>\n  <% if (currentUser && comment.authorId === currentUser.id){ %>\n  <a href="#" class="action-link delete">Delete</a>\n  <% } %>\n</li>';
 });
 
 require.alias("aroc-side-comments/js/main.js", "side-comments-demo/deps/side-comments/js/main.js");
@@ -14397,12 +14398,15 @@ var existingComments = [
     "sectionId": "1",
     "comments": [
       {
-        "authorAvatarUrl": "http://f.cl.ly/items/1W303Y360b260u3v1P0T/jon_snow_small.png",
+        "authorAvatarUrl": "public/images/jon_snow.png",
         "authorName": "Jon Sno",
+        "authorUrl": "http://en.wikipedia.org/wiki/Kit_Harington",
+        "authorId": 1,
         "comment": "I'm Ned Stark's bastard. Related: I know nothing."
       },
       {
-        "authorAvatarUrl": "http://f.cl.ly/items/2o1a3d2f051L0V0q1p19/donald_draper.png",
+        "id": 112,
+        "authorAvatarUrl": "public/images/donald_draper.png",
         "authorName": "Donald Draper",
         "comment": "I need a scotch."
       }
@@ -14412,9 +14416,10 @@ var existingComments = [
     "sectionId": "3",
     "comments": [
       {
-        "authorAvatarUrl": "http://f.cl.ly/items/0l1j230k080S0N1P0M3e/clay-davis.png",
+        "authorAvatarUrl": "public/images/clay_davis.png",
         "authorName": "Senator Clay Davis",
-        "comment": "These Side Comments are incredible. Sssshhhiiiiieeeee."
+        "comment": "These Side Comments are incredible. Sssshhhiiiiieeeee.",
+        "authorId": 3
       }
     ]
   }
@@ -14429,7 +14434,7 @@ $(document).ready(function(){
     '#commentable-container',
     {
       id: 1,
-      avatarUrl: "http://f.cl.ly/items/0s1a0q1y2Z2k2I193k1y/default-user.png",
+      avatarUrl: "public/images/user.png",
       name: "You"
     },
     existingComments
