@@ -31,7 +31,6 @@ function Section( eventPipe, $el, currentUser, comments ) {
  * @param  {Object} event The event object.
  */
 Section.prototype.markerClick = function( event ) {
-	console.log('clicked');
 	event.preventDefault();
 	this.select();
 };
@@ -77,7 +76,12 @@ Section.prototype.hideCommentForm = function() {
  * Focus on the comment box in the comment form.
  */
 Section.prototype.focusCommentBox = function() {
-	this.$el.find('.comment-box').get(0).focus();
+	// NOTE: !!HACK!! Using a timeout here because the autofocus causes a weird
+	// "jump" in the form. It renders wider than it should be on screens under 768px
+	// and then jumps to a smaller size.
+	setTimeout(_.bind(function(){
+		this.$el.find('.comment-box').get(0).focus();
+	}, this), 300);
 };
 
 /**
@@ -114,10 +118,8 @@ Section.prototype.postCommentClick = function( event ) {
  * Post a comment to this section.
  */
 Section.prototype.postComment = function() {
-	this.$el.find(".comment-box").children().not("br").each(function() {
-		$(this).replaceWith(this.innerHTML);
-	});
-  var commentBody = this.$el.find('.comment-box').html();
+	var $commentBox = this.$el.find('.comment-box');
+  var commentBody = $commentBox.val();
   var comment = {
   	sectionId: this.id,
   	comment: commentBody,
@@ -126,6 +128,7 @@ Section.prototype.postComment = function() {
   	authorId: this.currentUser.id,
   	authorUrl: this.currentUser.authorUrl || null
   };
+  $commentBox.val(''); // Clear the comment.
   this.eventPipe.emit('commentPosted', comment);
 };
 
