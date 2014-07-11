@@ -602,8 +602,8 @@ p.attribution a {
 @media (max-width: 40em) {
   #header {
     background: url('../../public/images/typing.png') top center no-repeat;
-    -webkit-background-size: cover;
-    background-size: cover;
+    -webkit-background-size: cover cover;
+            background-size: cover;
   }
   #header h1 {
     padding-top: 40px;
