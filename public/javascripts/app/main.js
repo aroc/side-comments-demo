@@ -31,7 +31,8 @@ var existingComments = [
 ];
 
 $(document).ready(function(){
-  FastClick(document.body);
+  var SideComments = require('side-comments');
+  FastClick.attach(document.body);
 
   // Init side-comments.
   var sideComments = new SideComments(

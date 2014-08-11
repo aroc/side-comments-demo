@@ -14,14 +14,16 @@ var paths = {
     'public/javascripts/vendor/*.js',
     'public/javascripts/app/*.js'
   ],
-  less: 'public/stylesheets/app/base.less'
+  css: [
+    'public/javascripts/app/**/*.css'
+  ]
 };
 
 gulp.task('templates', function(){
   gulp.src(['./templates/partials/*.hbs'])
     .pipe(handlebars())
     .pipe(defineModule('node'))
-    .pipe(gulp.dest('build/templates/'));
+    .pipe(gulp.dest('./compiled_templates'));
 });
 
 gulp.task('scripts', function() {
@@ -29,16 +31,17 @@ gulp.task('scripts', function() {
     .pipe(concat('build.js'))
     .pipe(uglify())
     .pipe(rename('build.min.js'))
-    .pipe(gulp.dest('./build'));
+    .pipe(gulp.dest('./public/build'));
 });
 
-gulp.task('less', function() {
-  return gulp.src(paths.less)
-    .pipe(less({ paths: paths.less }))
+gulp.task('styles', function() {
+  return gulp.src(paths.css)
+    .pipe(concat('build.css'))
+    .pipe(less({ paths: ['public/stylesheets/app/base.less'] }))
     .pipe(prefix({ cascade: true }))
     .pipe(minifyCSS())
     .pipe(rename('build.min.css'))
-    .pipe(gulp.dest('./build'));
+    .pipe(gulp.dest('./public/build'));
 });
 
 gulp.task('build-static-index', function () {
@@ -46,12 +49,12 @@ gulp.task('build-static-index', function () {
   var options = {
   // ignorePartials: true, // ignores the unknown partial in the handlebars template, defaults to false
     partials : {
-      header: require('./build/templates/header.js')(),
-      nav: require('./build/templates/nav.js')(),
-      footer: require('./build/templates/footer.js')(),
-      section_demo: require('./build/templates/section_demo.js')(),
-      section_get_started: require('./build/templates/section_get_started.js')(),
-      section_docs: require('./build/templates/section_docs.js')()
+      header: require('./compiled_templates/header.js')(),
+      nav: require('./compiled_templates/nav.js')(),
+      footer: require('./compiled_templates/footer.js')(),
+      section_demo: require('./compiled_templates/section_demo.js')(),
+      section_get_started: require('./compiled_templates/section_get_started.js')(),
+      section_docs: require('./compiled_templates/section_docs.js')()
     }
   };
 
@@ -64,9 +67,9 @@ gulp.task('build-static-index', function () {
 // Rerun the task when a file changes
 gulp.task('watch', function() {
   gulp.watch(paths.scripts, ['scripts']);
-  gulp.watch('public/stylesheets/app/*.less', ['less']);
+  gulp.watch(['public/stylesheets/**/*.less', 'public/stylesheets/**/*.css'] ['styles']);
   gulp.watch(['templates/*.hbs', 'templates/partials/*.hbs'], ['templates', 'build-static-index']);
 });
 
 // The default task (called when you run `gulp` from cli)
-gulp.task('default', ['scripts', 'less', 'templates', 'build-static-index', 'watch']);
+gulp.task('default', ['scripts', 'styles', 'templates', 'build-static-index', 'watch']);
