@@ -1,6 +1,3 @@
-var attachFastClick = require('fastclick');
-attachFastClick(document.body);
-
 var existingComments = [
   {
     "sectionId": "1",
@@ -33,9 +30,8 @@ var existingComments = [
   }
 ];
 
-var SideComments = require('side-comments');
-
 $(document).ready(function(){
+  FastClick(document.body);
 
   // Init side-comments.
   var sideComments = new SideComments(

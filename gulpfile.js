@@ -1,42 +1,44 @@
 var gulp = require('gulp');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
-var minifycss = require('gulp-minify-css')
 var less = require('gulp-less');;
 var prefix = require('gulp-autoprefixer');
 var rename = require('gulp-rename');
 var handlebars = require('gulp-handlebars');
 var compileHandlebars = require('gulp-compile-handlebars');
 var defineModule = require('gulp-define-module');
+var minifyCSS = require('gulp-minify-css');
 
 var paths = {
   scripts: [
     'public/javascripts/vendor/*.js',
-    'public/javascripts/build/build/*.js',
     'public/javascripts/app/*.js'
   ],
-  less: ['public/stylesheets/app/base.less']
+  less: 'public/stylesheets/app/base.less'
 };
-
-gulp.task('scripts', function() {
-  return gulp.src(paths.scripts)
-    .pipe(concat('app.js'))
-    .pipe(gulp.dest('public/javascripts'));
-});
-
-gulp.task('less', function() {
-  return gulp.src(paths.less)
-    .pipe(less({ paths: paths.less }))
-    .pipe(concat('style.css'))
-    .pipe(prefix({ cascade: true }))
-    .pipe(gulp.dest('public/stylesheets'));
-});
 
 gulp.task('templates', function(){
   gulp.src(['./templates/partials/*.hbs'])
     .pipe(handlebars())
     .pipe(defineModule('node'))
     .pipe(gulp.dest('build/templates/'));
+});
+
+gulp.task('scripts', function() {
+  return gulp.src(paths.scripts)
+    .pipe(concat('build.js'))
+    .pipe(uglify())
+    .pipe(rename('build.min.js'))
+    .pipe(gulp.dest('./build'));
+});
+
+gulp.task('less', function() {
+  return gulp.src(paths.less)
+    .pipe(less({ paths: paths.less }))
+    .pipe(prefix({ cascade: true }))
+    .pipe(minifyCSS())
+    .pipe(rename('build.min.css'))
+    .pipe(gulp.dest('./build'));
 });
 
 gulp.task('build-static-index', function () {
