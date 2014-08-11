@@ -15,7 +15,8 @@ var paths = {
     'public/javascripts/app/*.js'
   ],
   css: [
-    'public/javascripts/app/**/*.css'
+    'public/stylesheets/app/*.css',
+    'public/stylesheets/vendor/*.css'
   ]
 };
 
@@ -34,12 +35,20 @@ gulp.task('scripts', function() {
     .pipe(gulp.dest('./public/build'));
 });
 
+gulp.task('less', function() {
+  return gulp.src('public/stylesheets/app/base.less')
+    .pipe(less())
+    .pipe(prefix({ cascade: true }))
+    .pipe(rename('app.css'))
+    .pipe(gulp.dest('./public/stylesheets/app'));
+});
+
 gulp.task('styles', function() {
   return gulp.src(paths.css)
     .pipe(concat('build.css'))
-    .pipe(less({ paths: ['public/stylesheets/app/base.less'] }))
-    .pipe(prefix({ cascade: true }))
-    .pipe(minifyCSS())
+    .pipe(minifyCSS({
+      keepSpecialComments: false
+    }))
     .pipe(rename('build.min.css'))
     .pipe(gulp.dest('./public/build'));
 });
@@ -67,9 +76,9 @@ gulp.task('build-static-index', function () {
 // Rerun the task when a file changes
 gulp.task('watch', function() {
   gulp.watch(paths.scripts, ['scripts']);
-  gulp.watch(['public/stylesheets/**/*.less', 'public/stylesheets/**/*.css'] ['styles']);
+  gulp.watch(['public/stylesheets/**/*.less', 'public/stylesheets/**/*.css'] ['less', 'styles']);
   gulp.watch(['templates/*.hbs', 'templates/partials/*.hbs'], ['templates', 'build-static-index']);
 });
 
 // The default task (called when you run `gulp` from cli)
-gulp.task('default', ['scripts', 'styles', 'templates', 'build-static-index', 'watch']);
+gulp.task('default', ['scripts', 'less', 'styles', 'templates', 'build-static-index', 'watch']);
